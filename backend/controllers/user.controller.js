@@ -1,4 +1,5 @@
 import User from "../models/user.model.js";
+import Account from "../models/account.model.js";
 import jwt from 'jsonwebtoken';
 
 const userRegister = async (req, res) => {
@@ -9,7 +10,7 @@ const userRegister = async (req, res) => {
         if (existingUser) {
             return res.status(409).json({ msg: "User already exists" });
         }
-
+        
         const newUser = await User.create({
             username,
             password,
@@ -17,8 +18,12 @@ const userRegister = async (req, res) => {
             lastname,
             age
         });
-
-        res.status(201).json({ msg: "User registered", user: newUser });
+        const random = Math.floor(Math.random()*10000+1)
+        const account = await Account.create({
+            userId:newUser._id,
+            balance:random
+        })
+        res.status(201).json({ msg: "User registered", user: newUser, account: account });
     } catch (error) {
         res.status(500).json({ msg: "Registration failed", error: error.message });
     }
