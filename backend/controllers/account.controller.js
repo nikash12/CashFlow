@@ -1,6 +1,5 @@
 import Account from "../models/account.model.js";
 import User from "../models/user.model.js";
-import zod from 'zod'
 
 const accountBalance = async (req, res) => {
     try {
