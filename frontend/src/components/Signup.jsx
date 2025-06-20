@@ -34,7 +34,7 @@ export default function Signup() {
       console.log("Signup successful");
       navigate("/"); 
     } catch (err) {
-      console.error("Signup failed", err);
+      console.error("Signup failedss", err);
       setError("Signup failed. Please try again.");
     }
   };

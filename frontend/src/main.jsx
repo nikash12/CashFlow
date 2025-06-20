@@ -5,8 +5,9 @@ import App from './App.jsx'
 import {createBrowserRouter,RouterProvider} from 'react-router-dom'
 import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx'
+import Transfer from './components/Transfer.jsx'
 import { RecoilRoot } from 'recoil'
-import Transfer from './components/transfer.jsx'
+
 const routes = createBrowserRouter([
   {
     path:"/",
@@ -26,7 +27,7 @@ const routes = createBrowserRouter([
   },
   {
     path:"/Transfer",
-    element:<Transfer />
+    element:<Transfer/>
   }
 ])
 

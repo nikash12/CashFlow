@@ -8,7 +8,7 @@ export default function Box({username,firstname,lastname}){
     return(
         
             <ul className="list bg-base-100 rounded-box shadow-md ">            
-                <li className="list-row flex bg-amber-800 justify-between">
+                <li className="list-row flex bg-blue-500 justify-between">
                     <div>
                     <div>{username}</div>
                     <div className="text-xs uppercase font-semibold opacity-60">{firstname+" "+lastname}</div>

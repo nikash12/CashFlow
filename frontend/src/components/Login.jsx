@@ -1,6 +1,8 @@
 import { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+
+
 export default function Login(){
     const navigate = useNavigate()
     const [username,setUsername] = useState("")
@@ -11,6 +13,7 @@ export default function Login(){
             const res = await axios.post("http://localhost:2001/api/Login",{username,password})
             const token = res.data.token
             localStorage.setItem("token",token)
+            localStorage.setItem("username",res.data.username)
             console.log("DONE");
             navigate("/")
         }catch(err){

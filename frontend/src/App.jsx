@@ -5,10 +5,12 @@ import Dashboard from './components/Dashboard/Dashboard'
 function App() {
  
   return (
-    <>
+    <div>
       <Navbar />
-      <Dashboard/>
-    </>
+      <div className='m-[50px]'>
+        <Dashboard/>
+      </div>
+    </div>
   )
 }
 

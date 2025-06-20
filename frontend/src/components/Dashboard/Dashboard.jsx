@@ -9,7 +9,7 @@ export default function Dashboard(){
         const timeout = setTimeout(()=>{
             axios.get(`http://localhost:2001/api/All?username=${input}`,{
                 headers:{
-                    Authorization:"Bearer "+localStorage.getItem("token").toString()
+                    Authorization:"Bearer "+localStorage.getItem("token")
                 }
             })
             .then((res)=>setUsers(res.data.users))
@@ -21,7 +21,7 @@ export default function Dashboard(){
         axios.get(`http://localhost:2001/api/account/Balance`,
             {
                 headers:{
-                    Authorization:"Bearer "+localStorage.getItem("token").toString()
+                    Authorization:"Bearer "+localStorage.getItem("token")
                 }
             }
         ).then((res)=>{setBalance(res.data.balance)})
@@ -29,7 +29,8 @@ export default function Dashboard(){
     },[])
     return(
         <div>
-            <h1>Balance:{balance}</h1>
+            <h1 className="text-3xl font-bold">{localStorage.getItem("username")}</h1>
+            <h2 >Balance:{balance}</h2>
             <input type="text" onChange={(el)=>{setInput(el.target.value)}} value={input} placeholder="search users" className="w-2xl h-[50px] border-1"></input>
             {users.map((ele,i)=>{
                 return(

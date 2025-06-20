@@ -41,7 +41,7 @@ export default function Transfer(){
             <legend className="fieldset-legend">Send Cash</legend>
 
             <label className="label">to {username}</label>
-            <input type="text" className="input" placeholder="enter amount" onChange={(e)=>setAmount(e.target.value)} value={amount}/>
+            <input type="number" className="input" placeholder="enter amount" onChange={(e)=>setAmount(e.target.value)} value={amount}/>
 
             <button className="btn btn-neutral mt-4" type="submit">send</button>
             </fieldset>
