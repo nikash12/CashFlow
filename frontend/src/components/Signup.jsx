@@ -32,7 +32,7 @@ export default function Signup() {
       const token = res.data.token;
       localStorage.setItem("token", token);
       console.log("Signup successful");
-      navigate("/"); 
+      navigate("/Login"); 
     } catch (err) {
       console.error("Signup failedss", err);
       setError("Signup failed. Please try again.");
