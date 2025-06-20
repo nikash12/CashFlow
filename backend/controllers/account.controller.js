@@ -1,6 +1,6 @@
 import Account from "../models/account.model.js";
 import User from "../models/user.model.js";
-
+import mongoose from "mongoose";
 const accountBalance = async (req, res) => {
     try {
         const {userId} = req.user
@@ -34,6 +34,7 @@ const accountTransfer = async (req, res) => {
                 msg: "Receiver doesnt exists",
             });
         }
+        console.log(userId,to,amount);
         
         if(sender.balance<amount){
             return res.status(400).json({ msg: "Insufficient balance" });

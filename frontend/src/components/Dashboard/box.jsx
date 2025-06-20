@@ -1,10 +1,9 @@
-import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
-export default function Box({receiverId,username,firstname,lastname}){
-
+export default function Box({username,firstname,lastname}){
+    const navigate = useNavigate()
     function handleSend(){
-        const senderUsername = localStorage.get("username").toString()
-        
+        navigate(`/Transfer?username=${username}&`)        
     }
     return(
         

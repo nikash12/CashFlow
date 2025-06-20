@@ -3,7 +3,7 @@ import { accountMiddleware,accountTransferMiddleware } from "../middleware/accou
 import { accountBalance, accountTransfer } from "../controllers/account.controller.js";
 const accRoute = Router()
 
-accRoute.route('/Balance').post(
+accRoute.route('/Balance').get(
     accountMiddleware,
     accountBalance
 )

@@ -19,7 +19,7 @@ const accountMiddleware = async(req,res,next)=>{
 const accountTransferMiddleware = async(req,res,next)=>{
     const schema = zod.object({
         to:zod.coerce.string(),
-        amount:zod.number().positive("Amount must be more than 0")
+        amount:zod.coerce.number().positive("Amount must be more than 0")
     })
     const result = schema.safeParse(req.body);
 
@@ -29,6 +29,7 @@ const accountTransferMiddleware = async(req,res,next)=>{
     }
     req.body.to = result.data.to;
     req.body.amount = result.data.amount;
+    
     next()
 }
 export { accountMiddleware,accountTransferMiddleware }
