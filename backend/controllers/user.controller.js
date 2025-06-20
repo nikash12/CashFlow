@@ -39,7 +39,7 @@ const userLogin = async (req, res) => {
         }
 
         const token = jwt.sign({ userId: user._id }, "nikash13579", { expiresIn: "1h" });
-        res.status(200).json({ token });
+        res.status(200).json({ token,username,userId:user._id });
     } catch (error) {
         res.status(500).json({ msg: "Login failed", error: error.message });
     }
@@ -65,4 +65,38 @@ const userUpdate = async (req, res) => {
     }
 };
 
-export { userRegister, userLogin, userUpdate };
+const userAll = async (req, res) => {
+    try {
+        const authHeader = req.headers.authorization;
+        if (!authHeader || !authHeader.startsWith("Bearer ")) {
+            return res.status(401).json({ msg: "Token not provided or malformed" });
+        }
+
+        const token = authHeader.split(" ")[1];
+        try {
+            jwt.verify(token, "nikash13579");
+        } catch (err) {
+            return res.status(403).json({ msg: "Invalid or expired token" });
+        }
+        const filter = {}
+        const {username} = req.query
+        if(username){
+            filter.username = { $regex: username, $options: "i"}
+        }
+        const users = await User.find(filter).limit(10);
+        const sendUsers = users.map(({ _id, username, firstname, lastname }) => ({
+            userId: _id,
+            username,
+            firstname,
+            lastname
+        }));
+
+        return res.status(200).json({ users: sendUsers });
+
+    } catch (error) {
+        return res.status(500).json({ msg: "Fetching users failed", error: error.message });
+    }
+};
+
+
+export { userRegister, userLogin, userUpdate, userAll };

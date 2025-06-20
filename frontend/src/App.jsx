@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './components/Navbar'
 import {createBrowserRouter,RouterProvider} from 'react-router-dom'
+import Dashboard from './components/Dashboard/Dashboard'
 function App() {
   const [count, setCount] = useState(0)
   const router = createBrowserRouter([
@@ -23,6 +24,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <Dashboard/>
     </>
   )
 }
