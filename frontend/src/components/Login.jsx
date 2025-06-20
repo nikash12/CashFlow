@@ -32,6 +32,7 @@ export default function Login(){
             <input type="password" className="input" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} value={password}/>
 
             <button className="btn btn-neutral mt-4" type="submit">Login</button>
+            <p className="link text-blue-500 m-auto" onClick={()=>navigate("/Register")}> SignUp</p>
             </fieldset>
         </form>
     )
